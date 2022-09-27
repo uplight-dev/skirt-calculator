@@ -10,34 +10,71 @@
   }
   function onCalc() {
     const PI=3.14;
-    const dgreeMul = dgree.value / 360
-    const fullCircleSkirtInnerRadius = Number(waist.value) / (2 * PI);
+    const dgreeMul = Number(elDgreeMul.value)
+    const fullCircleSkirtInnerRadius = Number(elWaist.value) / (2 * PI);
     const innerRadius = fullCircleSkirtInnerRadius / dgreeMul
-    const outerRadius = innerRadius + Number(len.value)
+    const outerRadius = innerRadius + Number(elLen.value)
     const diameter = outerRadius * 2
     const width = diameter * dgreeMul
+    elDgree.innerText = userVal(360 * dgreeMul)
     elInnerRadius.innerText = userVal(innerRadius)
     elMatWidth.innerText = userVal(width)
+  }
+  
+  function tpl(waist, dgree, len) {
+  	elWaist.value = waist;
+    elDgree.value = dgree;
+    elLen.value = len;
+    onCalc()
+  }
+  
+  function tplYMidi() {
+ 		tpl(30, 1440, 30)
+  }
+  
+  function tplYMaxi() {
+ 		tpl(30, 1440, 40)
+  }
+  
+  function tplAdultMidi() {
+ 		tpl(85, 1440, 60)
+  }
+  
+  function tplAdultMaxi() {
+ 		tpl(85, 1440, 80)
   }
   </script>
 </head>
 <body>
   <h3>Input</h3>
+  <button onclick="tplYMidi()">Young-Midi</button>
+  <button onclick="tplYMaxi()">Young-Maxi</button>
+  <button onclick="tplAdultMidi()">Adult-Midi</button>
+  <button onclick="tplAdultMaxi()">Adult-Maxi</button>
+  <hr/>
   Waist
-  <input id="waist" value="85">
+  <input id="elWaist" value="85">
   <br/>
-  Degrees
-  <input id="dgree" value="1440">
+  Degrees Multiplier (of 360)
+  <input id="elDgreeMul" value="4">
   <br/>
   Length
-  <input id="len" value="60">
+  <input id="elLen" value="60">
   <br/>
   <input type="button" onclick="onCalc()" value="Calculate"></input>
   <hr/>
   <h3>Result</h3>
+  Degrees: <div id="elDgree"></div>
   Inner Radius (center cutout): <div id="elInnerRadius"></div>
   Material Width: <div id="elMatWidth"></div>
+  
+  <hr/>
+  
+  See:
   <br/>
-  <a href="https://jsfiddle.net/q5nr83fz/17/" target="_blank">Edit Source</a>
+  <a href="https://www.youtube.com/watch?v=oCpshEJ9UOw" target="_blank">How to sew a double circle skirt// DIY Instagram skirt // sew a vintage skirt</a>
+  <br/>
+  <br/>
+  <a href="https://jsfiddle.net/k5cq1asv/1" target="_blank">Edit Source</a>
 </body>
 </html>
