@@ -4,23 +4,40 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width">
   <title>JS Bin</title>
-  
-<script>
-  rMatWidth.innerHTML=1;
-</script>
-
+  <script>
+  function userVal(v) {
+  	return v.toFixed(2)
+  }
+  function onCalc() {
+    const PI=3.14;
+    const dgreeMul = dgree.value / 360
+    const fullCircleSkirtInnerRadius = Number(waist.value) / (2 * PI);
+    const innerRadius = fullCircleSkirtInnerRadius / dgreeMul
+    const outerRadius = innerRadius + Number(len.value)
+    const diameter = outerRadius * 2
+    const width = diameter * dgreeMul
+    elInnerRadius.innerText = userVal(innerRadius)
+    elMatWidth.innerText = userVal(width)
+  }
+  </script>
 </head>
 <body>
   <h3>Input</h3>
+  Waist
+  <input id="waist" value="85">
+  <br/>
   Degrees
-  <input name="dgree">
+  <input id="dgree" value="1440">
   <br/>
   Length
-  <input name="len">
+  <input id="len" value="60">
   <br/>
+  <input type="button" onclick="onCalc()" value="Calculate"></input>
   <hr/>
   <h3>Result</h3>
-  Material Width: <div id="rMatWidth"/>
+  Inner Radius (center cutout): <div id="elInnerRadius"></div>
+  Material Width: <div id="elMatWidth"></div>
   <br/>
+  <a href="https://jsfiddle.net/q5nr83fz/17/" target="_blank">Edit Source</a>
 </body>
 </html>
