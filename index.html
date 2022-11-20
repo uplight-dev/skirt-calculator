@@ -3,22 +3,25 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width">
-  <title>JS Bin</title>
+  <title>Skirt Calculator</title>
   <script>
   function userVal(v) {
   	return v.toFixed(2)
   }
   function onCalc() {
     const PI=3.14;
-    const dgreeMul = Number(elDgreeMul.value)
-    const fullCircleSkirtInnerRadius = Number(elWaist.value) / (2 * PI);
-    const innerRadius = fullCircleSkirtInnerRadius / dgreeMul
-    const outerRadius = innerRadius + Number(elLen.value)
-    const diameter = outerRadius * 2
+    const zipAllow=Number(elZip.value);
+    const hemAllow=Number(elHem.value);
+    const dgreeMul = Number(elDgreeMul.value);
+    const circumference = Number(elWaist.value) + zipAllow + hemAllow;
+    const totalRadius = circumference / (2 * PI);
+    const inRadius = totalRadius / dgreeMul
+    const outRadius = inRadius + Number(elLen.value)
+    const diameter = outRadius * 2
     const width = diameter * dgreeMul
     elDgree.innerText = userVal(360 * dgreeMul)
-    elInnerRadius.innerText = userVal(innerRadius)
-    elOuterRadius.innerText = userVal(outerRadius)
+    elInnerRadius.innerText = userVal(inRadius)
+    elOuterRadius.innerText = userVal(outRadius)
     elMatWidth.innerText = userVal(width)
   }
   
@@ -38,15 +41,15 @@
   }
   
   function tplAdultMidi() {
- 		tpl(85, 1440, 60)
+ 		tpl(80, 1440, 60)
   }
   
   function tplAdultMaxi() {
- 		tpl(85, 1440, 80)
+ 		tpl(80, 1440, 80)
   }
   </script>
 </head>
-<body>
+<body onload="tplAdultMidi()">
   <h3>Input</h3>
   <button onclick="tplYMidi()">Young-Midi</button>
   <button onclick="tplYMaxi()">Young-Maxi</button>
@@ -62,6 +65,12 @@
   Length
   <input id="elLen" value="60">
   <br/>
+  ZipAllow
+  <input id="elZip" value="2.54">
+  <br/>
+  HemAllow
+  <input id="elHem" value="2.54">
+  <br/>
   <input type="button" onclick="onCalc()" value="Calculate"></input>
   <hr/>
   <h3>Result</h3>
@@ -73,12 +82,15 @@
   <hr/>
   
   See:
+  
+  <br/>
+  <a href="https://www.youtube.com/watch?v=8CpEyS2p0fU" target="_blank">how to cut and sew 360, 720, 1080 and 1440 peplum #Easiest method 2021 #Full Fashion Tutorial Guide</a>
   <br/>
   <a href="https://www.youtube.com/watch?v=oCpshEJ9UOw" target="_blank">How to sew a double circle skirt// DIY Instagram skirt // sew a vintage skirt</a>
   <br/>
   <a href="https://www.youtube.com/watch?v=QMjCYTUvMHc" target="_blank">I made a full high waisted circle skirt with suspends/straps. ( DIY COTTAGECORE DRESS)</a>
   <br/>
   <br/>
-  <a href="https://jsbin.com/ranabemafe/1" target="_blank">Edit Source</a>
+  <a href="https://github.com/uplight-dev/skirt-calculator/edit/main/index.html" target="_blank">Edit Source</a>
 </body>
 </html>
